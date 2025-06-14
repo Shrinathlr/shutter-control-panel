@@ -1,15 +1,63 @@
 
-import React from "react";
+import React, { useState } from "react";
+import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
-const CommissionsPage = () => (
-  <div className="flex flex-col gap-8 animate-fade-in">
-    <h2 className="text-2xl font-bold mb-2 text-pink-500">Commission Settings</h2>
-    <div className="max-w-xl space-y-4">
-      <p>
-        Configure platform commission percentages by category, location, or country. Dynamic sliders/fields coming soon.
-      </p>
+const baseCommissionData = [
+  { category: "Wedding", country: "US", value: 20 },
+  { category: "Portrait", country: "US", value: 15 },
+  { category: "Event", country: "CA", value: 18 },
+];
+
+const CommissionsPage = () => {
+  const [commissions, setCommissions] = useState(baseCommissionData);
+
+  const updateCommission = (idx: number, val: number) => {
+    const updated = commissions.map((c, i) =>
+      i === idx ? { ...c, value: val } : c
+    );
+    setCommissions(updated);
+  };
+
+  return (
+    <div className="flex flex-col gap-8 animate-fade-in">
+      <h2 className="text-2xl font-bold mb-2 text-pink-500">Commission Settings</h2>
+      <div className="max-w-2xl space-y-6">
+        <p>Set platform commission per category or country. Changes auto-save (demo only).</p>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Category</TableHead>
+              <TableHead>Country</TableHead>
+              <TableHead>Commission (%)</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {commissions.map((row, idx) => (
+              <TableRow key={row.category + row.country}>
+                <TableCell>{row.category}</TableCell>
+                <TableCell>{row.country}</TableCell>
+                <TableCell>
+                  <input
+                    type="range"
+                    min={5}
+                    max={30}
+                    value={row.value}
+                    onChange={e => updateCommission(idx, Number(e.target.value))}
+                    className="w-32 accent-pink-500"
+                  />
+                  <span className="ml-3 font-semibold text-pink-500">{row.value}%</span>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <Button variant="default" className="mt-4 glow-on-hover" disabled>
+          Save changes
+        </Button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CommissionsPage;
