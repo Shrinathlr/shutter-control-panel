@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +9,11 @@ import UsersPage from "./pages/admin/Users";
 import BookingsPage from "./pages/admin/Bookings";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import DisputesPage from "./pages/admin/Disputes";
+import CommissionsPage from "./pages/admin/Commissions";
+import FinancePage from "./pages/admin/Finance";
+import NotificationsPage from "./pages/admin/Notifications";
+import KYCPage from "./pages/admin/KYC";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +31,11 @@ const App = () => (
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="users" element={<UsersPage />} />
                 <Route path="bookings" element={<BookingsPage />} />
+                <Route path="disputes" element={<DisputesPage />} />
+                <Route path="commissions" element={<CommissionsPage />} />
+                <Route path="finance" element={<FinancePage />} />
+                <Route path="notifications" element={<NotificationsPage />} />
+                <Route path="kyc" element={<KYCPage />} />
                 {/* Additional admin routes will be added here */}
               </Routes>
             </AdminLayout>
