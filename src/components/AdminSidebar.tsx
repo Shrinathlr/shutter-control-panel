@@ -8,7 +8,6 @@ import {
   Bell, 
   Shield, 
   BarChart3,
-  Camera
 } from "lucide-react";
 import {
   Sidebar,
@@ -72,14 +71,16 @@ export function AdminSidebar() {
   return (
     <Sidebar className="border-r border-sidebar-border">
       <SidebarHeader className="p-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 pink-gradient rounded-xl flex items-center justify-center">
-            <Camera className="w-6 h-6 text-white" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold text-sidebar-foreground">PhotoAdmin</h2>
-            <p className="text-sm text-sidebar-foreground/60">Super Admin Panel</p>
-          </div>
+        <div className="flex flex-col items-center gap-2">
+          {/* Logo image */}
+          <img
+            src="/lovable-uploads/e8f7f798-454c-42b4-90b7-786473e9c28e.png"
+            alt="REELSSTUDIOS Logo"
+            className="w-16 h-16 object-contain mb-2 drop-shadow-md"
+            draggable={false}
+          />
+          <span className="text-xl font-extrabold text-sidebar-foreground tracking-wide">REELSSTUDIOS</span>
+          <span className="text-sm text-sidebar-foreground/60 -mt-1">Super Admin Panel</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
