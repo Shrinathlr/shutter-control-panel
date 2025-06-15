@@ -2,10 +2,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const sentNotifications = [
-  { to: "All Users", title: "Platform Update", date: "2025-06-12", content: "New payment methods added" },
-  { to: "Photographers", title: "Contest!", date: "2025-06-10", content: "Submit your best shots by June 20!" },
-];
+const sentNotifications: any[] = []; // Empty recently sent
 
 const NotificationsPage = () => {
   const [title, setTitle] = useState("");
@@ -49,16 +46,7 @@ const NotificationsPage = () => {
         </form>
         <h3 className="font-semibold text-muted-foreground mb-3">Recently Sent</h3>
         <ul className="rounded-xl bg-muted p-4 space-y-3 shadow">
-          {sentNotifications.map((n, i) => (
-            <li key={n.title + i} className="border-b border-muted pb-2 last:border-none last:pb-0">
-              <div className="flex justify-between">
-                <span className="font-medium">{n.title}</span>
-                <span className="text-xs text-muted-foreground">{n.date}</span>
-              </div>
-              <div className="text-sm text-muted-foreground mt-1">{n.content}</div>
-              <div className="text-xs italic">To: <span className="font-semibold">{n.to}</span></div>
-            </li>
-          ))}
+          <li className="text-gray-400 text-center py-4">No notifications sent yet.</li>
         </ul>
       </div>
     </div>

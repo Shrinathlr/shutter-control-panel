@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 
+// Only India
 const baseCommissionData = [
-  { category: "Wedding", country: "US", value: 20 },
-  { category: "Portrait", country: "US", value: 15 },
-  { category: "Event", country: "CA", value: 18 },
+  { category: "Wedding", country: "IN", value: 20 },
+  { category: "Portrait", country: "IN", value: 15 },
+  { category: "Event", country: "IN", value: 18 },
 ];
 
 const CommissionsPage = () => {
@@ -23,7 +24,7 @@ const CommissionsPage = () => {
     <div className="flex flex-col gap-8 animate-fade-in">
       <h2 className="text-2xl font-bold mb-2 text-pink-500">Commission Settings</h2>
       <div className="max-w-2xl space-y-6">
-        <p>Set platform commission per category or country. Changes auto-save (demo only).</p>
+        <p>Set platform commission per category for India only. Changes auto-save (demo only).</p>
         <Table>
           <TableHeader>
             <TableRow>

@@ -3,9 +3,9 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const metrics = [
-  { label: "Total Earnings", value: "$24,300", className: "text-pink-500" },
-  { label: "Payouts Pending", value: "$2,150", className: "text-yellow-500" },
-  { label: "Total Commission", value: "$5,540", className: "text-green-500" },
+  { label: "Total Earnings", value: "₹0", className: "text-pink-500" },
+  { label: "Payouts Pending", value: "₹0", className: "text-yellow-500" },
+  { label: "Total Commission", value: "₹0", className: "text-green-500" },
 ];
 
 const FinancePage = () => (
