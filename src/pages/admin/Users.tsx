@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -20,13 +20,44 @@ export default function UsersPage() {
   // For demo, handle add user (no backend yet)
   function handleAddUser(e: React.FormEvent) {
     e.preventDefault();
-    // Here admin would verify and add the user
     setOpen(false);
     setNewUser({ name: "", email: "" });
   }
 
   return (
     <div className="space-y-6">
+      {/* Admin Details Section */}
+      <Card className="mb-6 border-pink-200 shadow">
+        <CardHeader>
+          <CardTitle className="text-pink-600">Admin Details</CardTitle>
+          <CardDescription>
+            View your administrator account information.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+            <img
+              src="/lovable-uploads/54b43b15-e7cb-45d8-bcec-80bfa62d97dd.png"
+              alt="Admin profile"
+              className="w-20 h-20 rounded-full border-4 border-pink-200 object-cover"
+              draggable={false}
+            />
+            <div className="space-y-1">
+              <div>
+                <span className="font-semibold text-gray-800">Name:</span> Admin User
+              </div>
+              <div>
+                <span className="font-semibold text-gray-800">Email:</span> admin@example.com
+              </div>
+              <div>
+                <span className="font-semibold text-gray-800">Role:</span> Super Admin
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      {/* End Admin Details Section */}
+
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
