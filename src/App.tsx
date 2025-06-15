@@ -14,6 +14,7 @@ import CommissionsPage from "./pages/admin/Commissions";
 import FinancePage from "./pages/admin/Finance";
 import NotificationsPage from "./pages/admin/Notifications";
 import KYCPage from "./pages/admin/KYC";
+import AuthPage from "./pages/AuthPage";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/auth" element={<AuthPage />} />
           <Route path="/admin/*" element={
             <AdminLayout>
               <Routes>

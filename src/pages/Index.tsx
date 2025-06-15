@@ -1,8 +1,8 @@
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Camera, Users, Calendar, BarChart3 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -45,6 +45,12 @@ const Index = () => {
         >
           Enter Admin Dashboard
         </Button>
+
+        <div className="flex justify-center mt-8">
+          <Link to="/auth" className="px-5 py-2 bg-pink-600 text-white rounded font-bold shadow hover:bg-pink-700 focus:outline-none ring-2 ring-pink-200">
+            Sign In / Sign Up
+          </Link>
+        </div>
       </div>
     </div>
   );
