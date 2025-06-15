@@ -7,6 +7,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 const disputes: any[] = []; // No disputes
 
