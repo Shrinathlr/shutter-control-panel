@@ -11,52 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const bookings = [
-  {
-    id: "BK001",
-    client: "John Doe",
-    photographer: "Sarah Johnson",
-    type: "Wedding",
-    date: "2024-06-15",
-    status: "confirmed",
-    amount: "$2,500",
-    location: "Central Park, NYC",
-    created: "2024-06-01"
-  },
-  {
-    id: "BK002",
-    client: "Mary Smith",
-    photographer: "Mike Chen",
-    type: "Portrait",
-    date: "2024-06-20",
-    status: "pending",
-    amount: "$300",
-    location: "Studio Downtown",
-    created: "2024-06-05"
-  },
-  {
-    id: "BK003",
-    client: "David Wilson",
-    photographer: "Emma Rodriguez",
-    type: "Event",
-    date: "2024-06-18",
-    status: "completed",
-    amount: "$800",
-    location: "Conference Center",
-    created: "2024-05-28"
-  },
-  {
-    id: "BK004",
-    client: "Lisa Johnson",
-    photographer: "Alex Thompson",
-    type: "Family",
-    date: "2024-06-25",
-    status: "cancelled",
-    amount: "$450",
-    location: "Outdoor Park",
-    created: "2024-06-03"
-  },
-];
+// Empty bookings array as requested
+const bookings: any[] = [];
 
 const statusColors = {
   confirmed: "bg-green-100 text-green-800",
@@ -83,10 +39,10 @@ export default function BookingsPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {[
-          { label: "Total Bookings", value: "2,341", color: "blue" },
-          { label: "Confirmed", value: "1,456", color: "green" },
-          { label: "Pending", value: "234", color: "yellow" },
-          { label: "This Month", value: "567", color: "pink" }
+          { label: "Total Bookings", value: "0", color: "blue" },
+          { label: "Confirmed", value: "0", color: "green" },
+          { label: "Pending", value: "0", color: "yellow" },
+          { label: "This Month", value: "0", color: "pink" }
         ].map((stat, index) => (
           <Card key={index} className="metric-card card-hover">
             <CardContent className="p-6 text-center">
@@ -131,7 +87,7 @@ export default function BookingsPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Calendar className="w-5 h-5 text-pink-600" />
-            All Bookings ({bookings.length})
+            All Bookings (0)
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -150,62 +106,80 @@ export default function BookingsPage() {
                 </tr>
               </thead>
               <tbody>
-                {bookings.map((booking) => (
-                  <tr key={booking.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                    <td className="py-4 px-4 font-medium text-pink-600">{booking.id}</td>
-                    <td className="py-4 px-4">
-                      <div>
-                        <p className="font-medium text-gray-900">{booking.client}</p>
-                        <p className="text-sm text-gray-500">{booking.location}</p>
+                {bookings.length === 0 ? (
+                  <tr>
+                    <td colSpan={8}>
+                      <div className="py-16 flex flex-col items-center">
+                        <img
+                          src="/placeholder.svg"
+                          alt="No bookings"
+                          className="w-24 h-24 mb-4 opacity-60"
+                          draggable={false}
+                        />
+                        <p className="text-center text-gray-400 text-sm">
+                          No bookings found.
+                        </p>
                       </div>
-                    </td>
-                    <td className="py-4 px-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
-                          {booking.photographer.charAt(0)}
-                        </div>
-                        <span className="font-medium text-gray-900">{booking.photographer}</span>
-                      </div>
-                    </td>
-                    <td className="py-4 px-4">
-                      <Badge variant="outline">{booking.type}</Badge>
-                    </td>
-                    <td className="py-4 px-4 text-gray-600">{booking.date}</td>
-                    <td className="py-4 px-4">
-                      <Badge className={statusColors[booking.status as keyof typeof statusColors]}>
-                        {booking.status}
-                      </Badge>
-                    </td>
-                    <td className="py-4 px-4 font-semibold text-gray-900">{booking.amount}</td>
-                    <td className="py-4 px-4 text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="sm" className="glow-on-hover">
-                            <MoreHorizontal className="w-4 h-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem>
-                            <Eye className="w-4 h-4 mr-2" />
-                            View Details
-                          </DropdownMenuItem>
-                          {booking.status === 'pending' && (
-                            <>
-                              <DropdownMenuItem className="text-green-600">
-                                <CheckCircle className="w-4 h-4 mr-2" />
-                                Approve
-                              </DropdownMenuItem>
-                              <DropdownMenuItem className="text-red-600">
-                                <X className="w-4 h-4 mr-2" />
-                                Reject
-                              </DropdownMenuItem>
-                            </>
-                          )}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
                     </td>
                   </tr>
-                ))}
+                ) : (
+                  bookings.map((booking) => (
+                    <tr key={booking.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                      <td className="py-4 px-4 font-medium text-pink-600">{booking.id}</td>
+                      <td className="py-4 px-4">
+                        <div>
+                          <p className="font-medium text-gray-900">{booking.client}</p>
+                          <p className="text-sm text-gray-500">{booking.location}</p>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                            {booking.photographer.charAt(0)}
+                          </div>
+                          <span className="font-medium text-gray-900">{booking.photographer}</span>
+                        </div>
+                      </td>
+                      <td className="py-4 px-4">
+                        <Badge variant="outline">{booking.type}</Badge>
+                      </td>
+                      <td className="py-4 px-4 text-gray-600">{booking.date}</td>
+                      <td className="py-4 px-4">
+                        <Badge className={statusColors[booking.status as keyof typeof statusColors]}>
+                          {booking.status}
+                        </Badge>
+                      </td>
+                      <td className="py-4 px-4 font-semibold text-gray-900">{booking.amount}</td>
+                      <td className="py-4 px-4 text-right">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="sm" className="glow-on-hover">
+                              <MoreHorizontal className="w-4 h-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>
+                              <Eye className="w-4 h-4 mr-2" />
+                              View Details
+                            </DropdownMenuItem>
+                            {booking.status === 'pending' && (
+                              <>
+                                <DropdownMenuItem className="text-green-600">
+                                  <CheckCircle className="w-4 h-4 mr-2" />
+                                  Approve
+                                </DropdownMenuItem>
+                                <DropdownMenuItem className="text-red-600">
+                                  <X className="w-4 h-4 mr-2" />
+                                  Reject
+                                </DropdownMenuItem>
+                              </>
+                            )}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
