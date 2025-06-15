@@ -73,14 +73,17 @@ const DisputesPage = () => (
                 </span>
               </TableCell>
               <TableCell>
-                {d.evidence[0]?.type === "photo" ? (
+                {/* Fix type error by checking for url/text */}
+                {d.evidence[0]?.type === "photo" && "url" in d.evidence[0] ? (
                   <img
                     src={d.evidence[0].url}
                     alt="evidence"
                     className="w-12 h-12 rounded-md object-cover border"
                   />
+                ) : d.evidence[0]?.type === "message" && "text" in d.evidence[0] ? (
+                  <span className="text-xs text-muted-foreground">{d.evidence[0].text}</span>
                 ) : (
-                  <span className="text-xs text-muted-foreground">{d.evidence[0]?.text}</span>
+                  <span className="text-xs text-muted-foreground">No evidence</span>
                 )}
               </TableCell>
               <TableCell>
@@ -102,3 +105,4 @@ const DisputesPage = () => (
 );
 
 export default DisputesPage;
+
