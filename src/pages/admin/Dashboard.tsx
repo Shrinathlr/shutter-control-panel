@@ -6,49 +6,45 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 const metrics = [
   {
     title: "Total Users",
-    value: "12,847",
-    change: "+12%",
+    value: "0",
+    change: "+0%",
     icon: Users,
     color: "text-blue-600",
   },
   {
     title: "Active Bookings",
-    value: "2,341",
-    change: "+8%",
+    value: "0",
+    change: "+0%",
     icon: Calendar,
     color: "text-green-600",
   },
   {
     title: "Revenue (30d)",
-    value: "$84,290",
-    change: "+23%",
+    value: "$0",
+    change: "+0%",
     icon: DollarSign,
     color: "text-pink-600",
   },
   {
     title: "Open Disputes",
-    value: "17",
-    change: "-5%",
+    value: "0",
+    change: "+0%",
     icon: AlertCircle,
     color: "text-orange-600",
   },
 ];
 
 const chartData = [
-  { name: 'Jan', revenue: 4000, bookings: 240 },
-  { name: 'Feb', revenue: 3000, bookings: 198 },
-  { name: 'Mar', revenue: 5000, bookings: 280 },
-  { name: 'Apr', revenue: 4500, bookings: 308 },
-  { name: 'May', revenue: 6000, bookings: 420 },
-  { name: 'Jun', revenue: 5500, bookings: 380 },
+  { name: 'Jan', revenue: 0, bookings: 0 },
+  { name: 'Feb', revenue: 0, bookings: 0 },
+  { name: 'Mar', revenue: 0, bookings: 0 },
+  { name: 'Apr', revenue: 0, bookings: 0 },
+  { name: 'May', revenue: 0, bookings: 0 },
+  { name: 'Jun', revenue: 0, bookings: 0 },
 ];
 
-const recentActivity = [
-  { type: "New User", name: "Sarah Johnson", time: "2 min ago", status: "photographer" },
-  { type: "Booking", name: "Wedding Package", time: "5 min ago", status: "confirmed" },
-  { type: "Dispute", name: "Refund Request #1234", time: "10 min ago", status: "pending" },
-  { type: "KYC", name: "Michael Chen", time: "15 min ago", status: "approved" },
-];
+// Make recentActivity empty as requested
+const recentActivity: any[] = [];
 
 export default function Dashboard() {
   return (
@@ -138,6 +134,10 @@ export default function Dashboard() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
+            {/* Render nothing if recentActivity is empty */}
+            {recentActivity.length === 0 && (
+              <p className="text-center text-gray-400 text-sm">No recent activity.</p>
+            )}
             {recentActivity.map((activity, index) => (
               <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                 <div className="flex items-center gap-4">
@@ -166,3 +166,4 @@ export default function Dashboard() {
     </div>
   );
 }
+

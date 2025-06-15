@@ -1,4 +1,3 @@
-
 import { 
   Users, 
   Calendar, 
@@ -72,15 +71,14 @@ export function AdminSidebar() {
     <Sidebar className="border-r border-sidebar-border">
       <SidebarHeader className="p-6">
         <div className="flex flex-col items-center gap-2">
-          {/* New Logo image, slightly larger */}
+          {/* Logo increased in size */}
           <img
             src="/lovable-uploads/54b43b15-e7cb-45d8-bcec-80bfa62d97dd.png"
             alt="Reels Studio Logo"
-            className="w-20 h-20 object-contain mb-2 drop-shadow-md"
+            className="w-24 h-24 object-contain mb-2 drop-shadow-md"
             draggable={false}
           />
           {/* Removed the REELSSTUDIOS text */}
-          <span className="text-sm text-sidebar-foreground/60 -mt-1">Super Admin Panel</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -124,4 +122,3 @@ export function AdminSidebar() {
     </Sidebar>
   );
 }
-
